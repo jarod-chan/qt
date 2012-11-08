@@ -21,4 +21,10 @@ public interface Constant {
 	 * 是否认证
 	 */
 	String AUTH="authenticated";
+	
+	
+	/**
+	 * 奖品中心id
+	 */
+	String CENTER_ID="centerId";
 }

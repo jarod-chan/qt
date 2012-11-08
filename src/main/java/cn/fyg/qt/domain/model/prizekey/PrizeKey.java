@@ -1,6 +1,8 @@
 package cn.fyg.qt.domain.model.prizekey;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,6 +18,7 @@ public class PrizeKey {
 	
 	private Long qtid;
 	
+	@Enumerated(EnumType.STRING)
 	private PrizeState prizeState;
 
 	public Long getPrizeKey() {

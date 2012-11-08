@@ -54,15 +54,19 @@
 		padding-bottom:10px;
 	}
 	
+	.logodiv .logo_context  div {
+		margin-bottom: 5px;
+	}
+	
 	.logodiv  #message {
 		text-align:left;
 		padding-bottom:10px;
-		padding-left:40px;
+		padding-left:50px;
 		padding-right:40px;
 		color: #FF0000;
 	}
 	
-	.logodiv .logo_context #qtkey{
+	.logodiv .logo_context input{
 		border: 1px solid #e5e5e5;
 		font-size: 15px;
 	}
@@ -81,27 +85,27 @@
 				actionFrom.submit();
 				return false;
 			});
-			$('#qtkey').attr({"maxlength":"20"}).iemaxlength();
 		});
 	</script>
 </head>
 
 <body>
 
-	<form action="${ctx}/verify" method="post">
+	<form action="${ctx}/ct" method="post">
 	<div class="container">
 		<div class="logodiv">
 			<div class="logo_title">
-				<span>方远房产满意度调查</span>
+				<span>奖品领取中心</span>
 			</div>
 			<div class="logo_context">
-					认证码&nbsp;&nbsp;<input type="text"  id="qtkey"  name="qtkey"  value="${qtkey}" /> 
+					<div >账户&nbsp;&nbsp;<input type="text"  id="idname"  name="idname"  value="${idname}" /> </div>
+					<div >密码&nbsp;&nbsp;<input type="password"  id="password"  name="password"  value="" /> </div>
 			</div>
 			<c:if test="${not empty message}" >
 				<div id="message">${message.message}</div>
 			</c:if>
 			<div class="logo_footer">
-					<button class="btn_normal" type="button" id="login"  >参与调查</button> 
+					<button class="btn_normal" type="button" id="login"  >登录</button> 
 			</div>		
 		</div>
 	</div>
