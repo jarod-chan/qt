@@ -52,7 +52,7 @@
 				<h2>${center.realname}</h2>
 			</div>
 			<div class="prizekey_div">
-				奖品码：[${prizeKey}]成功领取奖品[${prizeName}]。
+				纪念品领取码：[${prizeKey}]成功领取奖品[${prizeName}]。
 			</div>
 			<div style="text-align: right;">
 				<em >1</em>-&gt;<em >2</em>-&gt;<em style="font-weight: 600;color: red;">3</em>

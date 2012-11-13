@@ -95,7 +95,7 @@
 	<div class="container">
 		<div class="logodiv">
 			<div class="logo_title">
-				<span>奖品领取中心</span>
+				<span>纪念品领取中心</span>
 			</div>
 			<div class="logo_context">
 					<div >账户&nbsp;&nbsp;<input type="text"  id="idname"  name="idname"  value="${idname}" /> </div>

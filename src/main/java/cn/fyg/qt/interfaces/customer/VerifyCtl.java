@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import cn.fyg.qt.application.KeyService;
 import cn.fyg.qt.application.QuesService;
 import cn.fyg.qt.domain.model.key.Key;
+import cn.fyg.qt.domain.model.key.KeyState;
 import cn.fyg.qt.domain.model.ques.Ques;
 import cn.fyg.qt.domain.model.ques.QuesState;
 import cn.fyg.qt.interfaces.shared.Constant.Constant;
@@ -50,7 +51,7 @@ public class VerifyCtl {
 		if(isPass){
 			return passRedirect(longQtkey);
 		}
-		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.info().message("认证码[%s]认证失败，请确认以后重新输入！",qtkey));
+		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.info().message("纪念品领取码[%s]认证失败，请确认以后重新输入！",qtkey));
 		redirectAttributes.addFlashAttribute("qtkey", qtkey);
 		return "redirect:/verify";
 	}
@@ -63,11 +64,13 @@ public class VerifyCtl {
 			sessionUtil.setValue(Constant.QTID, ques.getQtid());
 			sessionUtil.setValue(Constant.QTKEY, key.getQtkey());
 		}
-		return redirectByQuesState(ques.getState());
+		return redirectByQuesState(ques,key);
 	}
 
-	private String redirectByQuesState(QuesState state) {
-		if(QuesState.active==state){
+	private String redirectByQuesState(Ques ques,Key key) {
+		if (QuesState.active == ques.getState()
+				&& (KeyState.nouse == key.getState() || KeyState.used == key.getState())) {
+			keyService.used(key.getQtkey());
 			return "redirect:/fill";
 		}
 		return "redirect:/finish";

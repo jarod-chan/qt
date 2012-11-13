@@ -1,4 +1,4 @@
-package cn.fyg.qt.interfaces.center.facade;
+package cn.fyg.qt.application.facade.center;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

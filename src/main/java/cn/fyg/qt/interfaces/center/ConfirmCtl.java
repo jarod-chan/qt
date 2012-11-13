@@ -11,9 +11,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cn.fyg.qt.application.CenterService;
 import cn.fyg.qt.application.PrizeService;
+import cn.fyg.qt.application.facade.center.ConfirmFacade;
 import cn.fyg.qt.domain.model.center.Center;
 import cn.fyg.qt.domain.model.prize.Prize;
-import cn.fyg.qt.interfaces.center.facade.ConfirmFacade;
 import cn.fyg.qt.interfaces.shared.Constant.Constant;
 import cn.fyg.qt.interfaces.shared.session.SessionUtil;
 

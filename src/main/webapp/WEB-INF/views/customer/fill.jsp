@@ -69,7 +69,7 @@
 				
 				var actionFrom=$("form");
 				var oldAction=actionFrom.attr("action");
-				actionFrom.attr("action",oldAction+"/next_choice").submit();
+				actionFrom.submit();
 			});
 		});
 	</script>
@@ -77,7 +77,7 @@
 
 <body>
 
-	<form action="${ctx}/finish/logout" method="post">
+	<form action="${ctx}/fill" method="post">
 	<div class="ctdiv">
 		<div class="ct_head"><div class="left_top"></div><div class="right_top"></div><div class="none"></div></div>
 		<div class="ct_context">
@@ -103,12 +103,17 @@
 						</c:forEach>
 					</div>	
 				</c:forEach>
+				<c:forEach var="simasw" items="${simpleAnswerList}" varStatus="status">
 					<div class="question_div" >
-						<div style="margin-left: 3px;">你有什么意见建议？（500字以内，可以不填）</div>
-						<div style="margin-left: 3px;">
-							<textarea name="shortBeans[${status.index}].value" class="text_context"></textarea>
-						</div>
-					</div>	
+							<div>${simasw.simple.no}.${simasw.simple.subject}</div>
+							<div style="margin-left: 15px;">
+								<input type="hidden" name="replayBeans[${status.index}].id" value="${simasw.id}" />
+								<input type="hidden" name="replayBeans[${status.index}].simpleId" value="${simasw.simple.id}" />
+								<textarea name="replayBeans[${status.index}].value" class="text_context">${simasw.value}</textarea>
+							</div>
+					</div>
+				</c:forEach>
+						
 			</div>
 			<div class="ques_btn">
 				<button class="btn_normal" type="button" id="btn_submit"  >提交问卷</button> &nbsp;&nbsp;

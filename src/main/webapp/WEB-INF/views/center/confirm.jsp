@@ -22,12 +22,12 @@
 			text-align: center;
 		}
 		.prizekey_div,.prize_div{
-			margin-left: 80px;
+			margin-left: 65px;
 			margin-bottom: 10px;
 		}
 		
 		.prize_div{
-			margin-left: 65px;
+			margin-left: 80px;
 		}
 	</style>
 	<script type="text/javascript">
@@ -57,10 +57,10 @@
 			</div>
 			<div class="prizekey_div">
 				<input type="hidden" name="prizeKey" value="${longPrizeKey}">
-				奖品码：[${longPrizeKey}]已经通过认证。
+				纪念品领取码：[${longPrizeKey}]已经通过认证。
 			</div>
 			<div class="prize_div">
-				选择奖品：<select name="prizeId">
+				选择纪念品：<select name="prizeId">
 					<c:forEach items="${prizeList}" var="prize">
 						<option value="${prize.id}">${prize.name}</option>
 					</c:forEach>

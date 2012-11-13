@@ -7,5 +7,9 @@ public interface KeyService {
 	boolean check(Long qtkey);
 	
 	Key find(Long qtkey);
+	
+	void used(Long qtkey);
+	
+	void finish(Long qtkey);
 
 }

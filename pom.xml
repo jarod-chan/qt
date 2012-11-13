@@ -71,6 +71,15 @@
 			<version>4.1.0.Final</version>
 			<scope>compile</scope>
 		</dependency>
+		
+		<!-- 引入对javax.mail 的显示依赖 此处待重构 进一步的修改 -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
 
 		<!-- JPA Persistence Dependencies -->
 

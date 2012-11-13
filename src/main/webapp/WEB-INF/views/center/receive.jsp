@@ -59,7 +59,7 @@
 				<h2>${center.realname}</h2>
 			</div>
 			<div class="prizekey_div">
-				奖品码&nbsp;&nbsp;<input type="text"   name="prizeKey"  value="${prizeKey}" /> 
+				纪念品领取码&nbsp;&nbsp;<input type="text"   name="prizeKey"  value="${prizeKey}" /> 
 			</div>
 			<c:if test="${not empty message}" >
 				<div id="message">${message.message}</div>

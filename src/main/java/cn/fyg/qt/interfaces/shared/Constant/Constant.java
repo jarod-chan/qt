@@ -18,6 +18,11 @@ public interface Constant {
 	String QTKEY="qtkey"; 
 	
 	/**
+	 * 奖品码
+	 */
+	String PRIZE_KEY="prizeKey"; 
+	
+	/**
 	 * 是否认证
 	 */
 	String AUTH="authenticated";

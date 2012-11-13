@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.fyg.qt.application.PrizeKeyService;
 import cn.fyg.qt.domain.model.prizekey.PrizeKey;
+import cn.fyg.qt.domain.model.prizekey.PrizeKeyFactory;
 import cn.fyg.qt.domain.model.prizekey.PrizeKeyRepository;
 import cn.fyg.qt.domain.model.prizekey.PrizeState;
 
@@ -34,6 +35,17 @@ public class PrizeKeyServiceImpl implements PrizeKeyService {
 	public void used(Long prizeKey) {
 		PrizeKey key = prizeKeyRepository.findOne(prizeKey);
 		key.setPrizeState(PrizeState.used);
+	}
+
+	@Override
+	public PrizeKey create(Long qtid) {
+		return PrizeKeyFactory.create(qtid);
+	}
+
+	@Override
+	@Transactional
+	public PrizeKey save(PrizeKey prizeKey) {
+		return prizeKeyRepository.save(prizeKey);
 	}
 
 }

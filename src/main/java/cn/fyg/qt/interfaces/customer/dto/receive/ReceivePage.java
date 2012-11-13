@@ -4,9 +4,10 @@ import java.util.List;
 
 public class ReceivePage {
 	
-	private boolean finish;
 	
 	List<ReceiveBean> receiveBeans;
+	
+	List<ReplayBean> replayBeans;
 
 	public List<ReceiveBean> getReceiveBeans() {
 		return receiveBeans;
@@ -16,13 +17,12 @@ public class ReceivePage {
 		this.receiveBeans = receiveBeans;
 	}
 
-	public boolean isFinish() {
-		return finish;
+	public List<ReplayBean> getReplayBeans() {
+		return replayBeans;
 	}
 
-	public void setFinish(boolean finish) {
-		this.finish = finish;
+	public void setReplayBeans(List<ReplayBean> replayBeans) {
+		this.replayBeans = replayBeans;
 	}
 
-	
 }

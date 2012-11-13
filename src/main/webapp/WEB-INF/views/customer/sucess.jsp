@@ -10,13 +10,20 @@
 	<%@ include file="/common/base.jsp" %>
 	<style type="text/css">
 		.ctdiv{
-			width: 400px;
+			width: 500px;
 		}
-		.ct_context{
+		
+		.warn_info{
+			line-height: 20px;
+		}
+		.spec{
 			color: red;
-			padding-left:10px;
-			padding-right:10px;
-			line-height: 25px;
+		}
+		.bigfont{
+			font-size: 40px;
+		}
+		.boldfont{
+			font-weight: bold;
 		}
 	</style>
 	<script type="text/javascript">
@@ -35,10 +42,21 @@
 	<div class="ctdiv">
 		<div class="ct_head"><div class="left_top"></div><div class="right_top"></div><div class="none"></div></div>
 		<div class="ct_context">
-			您输入的认证码[${qtkey}]已经认证通过。<br>
-			${reason},你无法进行其它操作。<br>
-			如果你已经参与本次调查，请到指定地点凭【纪念品领取码】领取纪念品，谢谢你的参与！<br>
-			<div style="text-align: right;">
+			<div>
+				您已经成功参与【${ques.name}】。<br>
+				<span class="spec bigfont">&nbsp;纪念品领取码：</span><br>
+				<span class="spec bigfont">【${prizekey}】</span><br>
+			</div>
+			<div class="warn_info">
+				&nbsp;&nbsp;&nbsp;&nbsp;请记录当前【纪念品领取码】（手机拍照，截图保存，手动抄写等），并携带该【纪念品领取码】到指定地点领取奖品！<br> 
+				注意事项：<br>
+				1.【纪念品领取码】是领取奖品的<span class="boldfont">唯一证明</span>，请妥善保管。<br>
+				
+				2.【纪念品领取码】是随机生成，退出将<span class=" boldfont">无法找回</span>，请在退出前确保你准确记录。<br>
+				
+				3.【纪念品领取码】只能<span class="boldfont">领取纪念品一次</span>，随后销毁，请做好保密工作。 <br>
+			</div>
+			<div style="text-align: right;margin-top: 10px;">
 				<button class="btn_normal" type="button" id="login_out"  >退出</button> &nbsp;&nbsp;
 			</div>
 		</div>

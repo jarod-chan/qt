@@ -14,11 +14,11 @@ import cn.fyg.qt.interfaces.shared.session.SessionUtil;
 
 @Controller
 @RequestMapping("/ct/sucess")
-public class SucessCtl {
+public class CtSucessCtl {
 
 	private static final String PATH = "center/";
 	private interface Page {
-		String SUCESS = PATH + "sucess";
+		String CTSUCESS = PATH + "ctsucess";
 	}
 	
 	@Autowired
@@ -31,6 +31,6 @@ public class SucessCtl {
 		Long centerId=sessionUtil.getValue(Constant.CENTER_ID); 
 		Center center = centerService.find(centerId);
 		map.put("center", center);
-		return Page.SUCESS;
+		return Page.CTSUCESS;
 	}
 }
