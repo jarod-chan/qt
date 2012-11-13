@@ -12,7 +12,9 @@
 		.ctdiv{
 			width: 500px;
 		}
-		
+		.key_info{
+			margin-top: 10px;
+		}
 		.warn_info{
 			line-height: 20px;
 		}
@@ -42,7 +44,7 @@
 	<div class="ctdiv">
 		<div class="ct_head"><div class="left_top"></div><div class="right_top"></div><div class="none"></div></div>
 		<div class="ct_context">
-			<div>
+			<div class="key_info">
 				您已经成功参与【${ques.name}】。<br>
 				<span class="spec bigfont">&nbsp;纪念品领取码：</span><br>
 				<span class="spec bigfont">【${prizekey}】</span><br>

@@ -1,11 +1,15 @@
 package cn.fyg.qt.application.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.fyg.qt.application.KeyService;
 import cn.fyg.qt.domain.model.key.Key;
+import cn.fyg.qt.domain.model.key.KeyFactory;
 import cn.fyg.qt.domain.model.key.KeyRepository;
 import cn.fyg.qt.domain.model.key.KeyState;
 
@@ -46,5 +50,26 @@ public class KeyServiceImpl implements KeyService {
 			key.setState(KeyState.finish);
 		}
 	}
+
+	@Override
+	public Long countByQuesState(Long qtid, KeyState... keyStates) {
+		List<KeyState> arrayList = new ArrayList<KeyState>();
+		for (KeyState keyState : keyStates) {
+			arrayList.add(keyState);
+		}
+		return keyRepository.countByKeyState(qtid,arrayList);
+	}
+
+	@Override
+	public Key create(Long qtid) {
+		return KeyFactory.create(qtid);
+	}
+
+	@Override
+	@Transactional
+	public Key save(Key key) {
+		return keyRepository.save(key);
+	}
+
 
 }

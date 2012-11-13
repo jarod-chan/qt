@@ -42,7 +42,7 @@ public class LoginCtl {
 		if(isPass){
 			return passRedirect(idname);
 		}
-		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.info().message("账户密码有误,请重新输入！"));
+		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.error().message("用户密码有误,请重新输入！"));
 		redirectAttributes.addFlashAttribute("idname", idname);
 		return "redirect:/ct";
 	}

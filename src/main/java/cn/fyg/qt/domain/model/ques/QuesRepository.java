@@ -7,8 +7,8 @@ import org.springframework.data.repository.Repository;
 
 public interface QuesRepository extends Repository<Ques,Long> {
 	
-	Ques findOne(Long id);
+	Ques findOne(Long qtid);
 
 	List<Ques> findAll(Sort sort);
-	
+		
 }

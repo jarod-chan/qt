@@ -71,6 +71,8 @@
 				var oldAction=actionFrom.attr("action");
 				actionFrom.submit();
 			});
+			
+			$(".text_context").attr({"maxlength":"500"}).iemaxlength();
 		});
 	</script>
 </head>
@@ -105,7 +107,7 @@
 				</c:forEach>
 				<c:forEach var="simasw" items="${simpleAnswerList}" varStatus="status">
 					<div class="question_div" >
-							<div>${simasw.simple.no}.${simasw.simple.subject}</div>
+							<div>${simasw.simple.no}.${simasw.simple.subject}(500字以内，可以不填)</div>
 							<div style="margin-left: 15px;">
 								<input type="hidden" name="replayBeans[${status.index}].id" value="${simasw.id}" />
 								<input type="hidden" name="replayBeans[${status.index}].simpleId" value="${simasw.simple.id}" />

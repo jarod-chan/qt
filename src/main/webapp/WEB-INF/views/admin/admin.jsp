@@ -91,14 +91,14 @@
 
 <body>
 
-	<form action="${ctx}/ct" method="post">
+	<form action="${ctx}/am" method="post">
 	<div class="container">
 		<div class="logodiv">
 			<div class="logo_title">
-				<span>纪念品领取中心</span>
+				<span>系统管理员</span>
 			</div>
 			<div class="logo_context">
-					<div >用户&nbsp;&nbsp;<input type="text"  id="idname"  name="idname"  value="${idname}" /> </div>
+					<div >用户&nbsp;&nbsp;<input type="text"  id="name"  name="name"  value="${name}" /> </div>
 					<div >密码&nbsp;&nbsp;<input type="password"  id="password"  name="password"  value="" /> </div>
 			</div>
 			<c:if test="${not empty message}" >

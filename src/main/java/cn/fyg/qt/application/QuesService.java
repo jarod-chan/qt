@@ -9,4 +9,10 @@ public interface QuesService {
 	Ques find(Long qtid);
 
 	List<Ques> findByQtidAsc();
+
+	void finish(Long qtid);
+
+	void close(Long qtid);
+	
+
 }
