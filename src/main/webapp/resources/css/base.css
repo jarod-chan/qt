@@ -73,3 +73,24 @@ a:hover {
 	border-color: #3079ed;
 	color: #fff;
 }
+
+
+.btn_disable {
+	border: 1px solid;
+	border-radius: 2px;
+	cursor: pointer;
+	font-size: 12px;
+	padding: 0px 12px;
+  	height: 25px; 
+  	line-height: 24px\9;   
+}
+
+.btn_disable {
+	margin-left: 10px;
+	border-color: #c3c3c3;
+	background: #ececec;
+	color: #969696;
+	background: -webkit-gradient(linear, center bottom, center top, from(#ececec),
+		to(#f4f4f4) );
+	background: -moz-linear-gradient(90deg, #ececec, #f4f4f4);
+}

@@ -71,7 +71,7 @@ public class VerifyCtl {
 		if (QuesState.active == ques.getState()
 				&& (KeyState.nouse == key.getState() || KeyState.used == key.getState())) {
 			keyService.used(key.getQtkey());
-			return "redirect:/fill";
+			return "redirect:/agreement";
 		}
 		return "redirect:/finish";
 	}
