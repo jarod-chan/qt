@@ -1,0 +1,26 @@
+package cn.fyg.qt.application.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import cn.fyg.qt.application.KeypairLogService;
+import cn.fyg.qt.domain.model.keypairLog.KeypairLog;
+import cn.fyg.qt.domain.model.keypairLog.KeypairLogRepository;
+
+@Service
+public class KeypairLogServiceImpl implements KeypairLogService {
+	
+	@Autowired
+	KeypairLogRepository keypairLogRepository;
+
+	@Override
+	@Transactional
+	public KeypairLog log(Long qtkey, Long prizeKey) {
+		KeypairLog keypairLog=new KeypairLog();
+		keypairLog.setQtkey(qtkey);
+		keypairLog.setPrizeKey(prizeKey);
+		return keypairLogRepository.save(keypairLog);
+	}
+
+}

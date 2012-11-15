@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.fyg.qt.application.AnswerService;
 import cn.fyg.qt.application.ChoiceService;
 import cn.fyg.qt.application.KeyService;
+import cn.fyg.qt.application.KeypairLogService;
 import cn.fyg.qt.application.PrizeKeyService;
 import cn.fyg.qt.application.ReplayService;
 import cn.fyg.qt.application.SimpleService;
@@ -41,6 +42,8 @@ public class FillFacade {
 	KeyService keyService;
 	@Autowired
 	PrizeKeyService prizeKeyService;
+	@Autowired
+	KeypairLogService keypairLogService;
 
 	public List<Question> getQuestionList(Long qtid,Long qtkey){
 		List<Choice> choiceList = choiceService.findByQtid(qtid);
@@ -61,6 +64,7 @@ public class FillFacade {
 		keyService.finish(qtkey);
 		PrizeKey prizeKey = prizeKeyService.create(qtid);
 		prizeKey = prizeKeyService.save(prizeKey);
+		keypairLogService.log(qtkey, prizeKey.getPrizeKey());
 		return prizeKey.getPrizeKey();
 	}
 	

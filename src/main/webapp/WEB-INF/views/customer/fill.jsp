@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -73,6 +74,19 @@
 			});
 			
 			$(".text_context").attr({"maxlength":"500"}).iemaxlength();
+			
+			//选项着色
+			var optColorArr=["#FF6000","#FFCC00","#FFFFFF","#99FFFF","#0099FF"];
+			
+			$("select").each(function(){
+				$(this).find("option").each(function(idx){
+					$(this).css("background-color",optColorArr[idx]);
+				});
+				$(this).bind("change",function(){
+					$(this).css("background-color",optColorArr[this.selectedIndex])
+				}).triggerHandler("change");
+			});
+			
 		});
 	</script>
 </head>
@@ -90,21 +104,58 @@
 			
 				<c:set value="0" var="index" /> 
 				<c:forEach var="question" items="${questionList}" varStatus="status">
+					
 					<div class="question_div" >
-						<div>${question.choice.no}.${question.choice.subject}</div>
-						<c:forEach var="item" items="${question.items}" >
-							<div style="margin-left: 15px; margin-top: 2px;">
-								<input type="hidden" name="receiveBeans[${index}].id"    class="partItemId" value="${item.id}">
-								<input type="hidden" name="receiveBeans[${index}].value" class="partItemValue" value="${item.value}">
-								<c:forEach var="option" items="${item.options}">
-									<input type="checkbox" name="chk_${status.count}_${item.type}" value="${option.id}" <c:if test="${option.id==item.value}">checked="true"</c:if> />(${option.no})&nbsp;${option.name}&nbsp;&nbsp;
-								</c:forEach>
-								<span class="not_choice" style="color: red;display: none;">【X】</span>
+						<!-- 根据答案组个数来确定是不是存在重要性 -->
+						<c:choose>
+							<c:when test="${fn:length(question.items)==2}">
+								<c:set value="${question.items[0]}" var="itemSel" />
+								<c:set value="${question.items[1]}" var="itemChk" />
+							</c:when>
+							<c:otherwise>
+								<c:set value="${null}" var="itemSel" />
+								<c:set value="${question.items[0]}" var="itemChk" />
+							</c:otherwise>
+						</c:choose>
+				
+						<div >
+							<div style="float: left; width: 620px;">${question.choice.no}.${question.choice.subject}</div>				
+							<div style="float: left; ">
+								<c:if test="${not empty itemSel}">
+										<input type="hidden" name="receiveBeans[${index}].id"   value="${itemSel.id}">
+										问题重要性：<select name="receiveBeans[${index}].value" >
+											<c:forEach var="option" items="${itemSel.options}">
+												<option value="${option.id}" <c:if test="${option.id==itemSel.value||(itemSel.value==null&&option.no=='C')}">selected="true"</c:if> >${option.name}</option>
+											</c:forEach>
+										</select>
+									<c:set value="${index+1}" var="index" />
+								</c:if>
 							</div>
-							<c:set value="${index+1}" var="index" />
-						</c:forEach>
-					</div>	
+							<div style="clear: both;"></div>
+						</div>
+						
+						<div style="margin-left: 15px; margin-top: 2px;">
+							<input type="hidden" name="receiveBeans[${index}].id"    class="partItemId" value="${itemChk.id}">
+							<input type="hidden" name="receiveBeans[${index}].value" class="partItemValue" value="${itemChk.value}">
+							<c:forEach var="option" items="${itemChk.options}">
+								<input type="checkbox" name="chk_${status.count}_${itemChk.type}" value="${option.id}" <c:if test="${option.id==itemChk.value}">checked="true"</c:if> />(${option.no})&nbsp;${option.name}&nbsp;&nbsp;
+							</c:forEach>
+							<span class="not_choice" style="color: red;display: none;">【X】</span>
+						</div>
+						<c:set value="${index+1}" var="index" />
+
+						
+						
+						
+						
+					</div>
+					
+					
+					
+						
 				</c:forEach>
+				
+						
 				<c:forEach var="simasw" items="${simpleAnswerList}" varStatus="status">
 					<div class="question_div" >
 							<div>${simasw.simple.no}.${simasw.simple.subject}(500字以内，可以不填)</div>
