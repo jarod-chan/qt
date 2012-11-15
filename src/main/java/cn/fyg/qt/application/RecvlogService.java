@@ -8,4 +8,5 @@ public interface RecvlogService {
 	
 	Recvlog save(Recvlog recvlog);
 
+	Recvlog findByPirzeKey(Long prizeKey);
 }

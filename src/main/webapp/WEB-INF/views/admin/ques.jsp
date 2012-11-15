@@ -48,6 +48,14 @@
 	 		 	.appendTo($("body"))
 	 		 	.submit();
 			});
+			
+			$("#trackQtkey").click(function(){
+				var ipt=$(this);
+				$('<form/>',{action:'${ctx}/am/ques/trackQtkey',method:'post'})
+				.append($("<input type='hidden' name='qtkey'/>").val(ipt.prev().val()))
+	 		 	.appendTo($("body"))
+	 		 	.submit();
+			});
 		});
 	</script>
 </head>
@@ -87,6 +95,15 @@
 						</c:forEach>
 					</tbody>
 				</table>
+			</div>
+			<div>
+					<br>
+					认证码：<input type="text" value="" /><input id="trackQtkey" type="button" value="跟踪">
+					<div>
+						认证码：${trackKey.keyInfo}<br>
+						奖品码：${trackKey.prizeInfo}<br>
+						领奖时间：${trackKey.recvInfo}<br>	
+					</div>
 			</div>
 			<div style="text-align: right;margin-top: 20px;">
 				<button class="btn_normal" type="button" id="login_out"  >退出</button> &nbsp;&nbsp;

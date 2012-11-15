@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import cn.fyg.qt.application.QuesService;
 import cn.fyg.qt.application.facade.admin.QuesFacade;
 import cn.fyg.qt.interfaces.admin.dao.QuesBean;
+import cn.fyg.qt.interfaces.admin.dao.TrackBean;
 import cn.fyg.qt.interfaces.shared.Constant.Constant;
 import cn.fyg.qt.interfaces.shared.message.Message;
 
@@ -56,6 +57,13 @@ public class QuesCtl {
 	public String close(@RequestParam("qtid")Long qtid,RedirectAttributes redirectAttributes){
 		quesService.close(qtid);
 		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.error().message("调查已经被关闭!"));
+		return "redirect:/am/ques";
+	}
+	
+	@RequestMapping(value="/trackQtkey",method=RequestMethod.POST)
+	public String trackQtkey(@RequestParam("qtkey")Long qtkey,RedirectAttributes redirectAttributes){
+		TrackBean trackKey = quesFacade.trackKey(qtkey);
+		redirectAttributes.addFlashAttribute("trackKey",trackKey);
 		return "redirect:/am/ques";
 	}
 }

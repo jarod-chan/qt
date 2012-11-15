@@ -26,4 +26,9 @@ public class RecvlogServiceImpl implements RecvlogService {
 		return recvlogRepository.save(recvlog);
 	}
 
+	@Override
+	public Recvlog findByPirzeKey(Long prizeKey) {
+		return recvlogRepository.findByPrizeKey(prizeKey);
+	}
+
 }

@@ -8,11 +8,16 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.fyg.qt.application.KeyService;
+import cn.fyg.qt.application.KeypairLogService;
 import cn.fyg.qt.application.QuesService;
+import cn.fyg.qt.application.RecvlogService;
 import cn.fyg.qt.domain.model.key.Key;
 import cn.fyg.qt.domain.model.key.KeyState;
+import cn.fyg.qt.domain.model.prizekey.PrizeKey;
 import cn.fyg.qt.domain.model.ques.Ques;
+import cn.fyg.qt.domain.model.recvlog.Recvlog;
 import cn.fyg.qt.interfaces.admin.dao.QuesBean;
+import cn.fyg.qt.interfaces.admin.dao.TrackBean;
 
 @Component
 public class QuesFacade {
@@ -21,6 +26,10 @@ public class QuesFacade {
 	QuesService quesService;
 	@Autowired
 	KeyService keyService;
+	@Autowired
+	KeypairLogService keypairLogService;
+	@Autowired
+	RecvlogService recvlogService;
 	
 	public List<QuesBean> getQuesBeanList() {
 		List<QuesBean> quesBeanList=new ArrayList<QuesBean>();
@@ -41,6 +50,29 @@ public class QuesFacade {
 			Key key=keyService.create(qtid);
 			keyService.save(key);
 		}
+	}
+	
+	public TrackBean trackKey(Long qtkey){
+		TrackBean trackBean = new TrackBean();
+		Key key = keyService.find(qtkey);
+		if(key==null){
+			return trackBean;
+		}
+		trackBean.setKeyInfo(String.format("[%s] 状态：%s", key.getQtkey(),key.getState().getName()));
+		
+		PrizeKey prizeKey = keypairLogService.findPrizeKeyByQtkey(qtkey);
+		if(prizeKey==null){
+			return trackBean;
+		}
+		trackBean.setPrizeInfo(String.format("[%s] 状态：%s",prizeKey.getPrizeKey(),prizeKey.getPrizeState().getName()));
+		
+		Recvlog recvlog = recvlogService.findByPirzeKey(prizeKey.getPrizeKey());
+		if(recvlog==null){
+			return trackBean;
+		}
+		trackBean.setRecvInfo(String.format("[%1$tY-%1$te-%1$tm %1$tH:%1$tM:%1$tS]", recvlog.getRecdate()));
+		
+		return trackBean;
 	}
 
 }
