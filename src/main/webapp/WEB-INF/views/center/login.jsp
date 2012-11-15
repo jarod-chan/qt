@@ -8,6 +8,7 @@
 	<%@ include file="/common/setting.jsp" %>
 	<%@ include file="/common/meta.jsp" %>
 	<%@ include file="/common/base.jsp" %>
+	<script src="${ctx}/resources/js/jquery.cookie.js" type="text/javascript"></script>
 	
 	<style>
 	.container {
@@ -71,6 +72,12 @@
 		font-size: 15px;
 	}
 	
+	.logodiv .logo_context select{
+		border: 1px solid #e5e5e5;
+		font-size: 15px;
+		width: 180px;
+	}
+	
 	.logodiv .logo_footer{
 		padding-bottom:10px;
 	}
@@ -80,7 +87,12 @@
 	
 	<script type="text/javascript">
 		$(function() {
+			var idname=$.cookie('rember_idname');
+			if(idname!=null){
+				$("#idname").find("option[value='"+idname+"']").attr("selected",true);
+			};
 			$('#login').click(function(){
+				$.cookie('rember_idname',$("#idname").val(), { expires: 30});
 				var actionFrom=$("form");
 				actionFrom.submit();
 				return false;
@@ -98,7 +110,12 @@
 				<span>纪念品领取中心</span>
 			</div>
 			<div class="logo_context">
-					<div >用户&nbsp;&nbsp;<input type="text"  id="idname"  name="idname"  value="${idname}" /> </div>
+					<div >用户&nbsp;&nbsp;<select id="idname"  name="idname">
+						  	<c:forEach var="center" items="${centerList}">
+						  		<option value="${center.idname}">${center.realname}</option>
+						  	</c:forEach>
+						  </select>
+					</div>
 					<div >密码&nbsp;&nbsp;<input type="password"  id="password"  name="password"  value="" /> </div>
 			</div>
 			<c:if test="${not empty message}" >

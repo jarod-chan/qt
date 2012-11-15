@@ -53,13 +53,13 @@ public class ReceiveCtl {
 		Long qtid = sessionUtil.getValue(Constant.QTID);
 		boolean isPass=prizeKeyService.check(longPrizeKey,qtid);
 		if(!isPass){
-			redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.error().message("奖品码[%s]认证失败，请确认以后重新输入！",prizeKey));
+			redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.error().message("领取码[%s]认证失败，请确认以后重新输入！",prizeKey));
 			redirectAttributes.addFlashAttribute("prizeKey", prizeKey);
 			return "redirect:/ct/receive";
 		}
 		PrizeKey key = prizeKeyService.find(longPrizeKey);
 		if(PrizeState.used==key.getPrizeState()){
-			redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.error().message("奖品码[%s]已经被领取，不能重复领取！",prizeKey));
+			redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.error().message("领取码[%s]已经被领取，不能重复领取！",prizeKey));
 			redirectAttributes.addFlashAttribute("prizeKey", prizeKey);
 			return "redirect:/ct/receive";
 		}

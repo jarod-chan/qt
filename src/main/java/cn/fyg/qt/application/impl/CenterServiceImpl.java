@@ -1,5 +1,7 @@
 package cn.fyg.qt.application.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,11 @@ public class CenterServiceImpl implements CenterService {
 	@Override
 	public Center find(Long id) {
 		return centerRepository.findOne(id);
+	}
+
+	@Override
+	public List<Center> findByQtid(Long qtid) {
+		return centerRepository.findByQtidOrderByIdAsc(qtid);
 	}
 
 }

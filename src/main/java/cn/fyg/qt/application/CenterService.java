@@ -1,5 +1,7 @@
 package cn.fyg.qt.application;
 
+import java.util.List;
+
 import cn.fyg.qt.domain.model.center.Center;
 
 public interface CenterService {
@@ -9,4 +11,6 @@ public interface CenterService {
 	Center findByIdname(String idname);
 
 	Center find(Long id);
+	
+	List<Center> findByQtid(Long qtid);
 }
