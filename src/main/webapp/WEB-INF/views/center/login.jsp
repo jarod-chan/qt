@@ -33,7 +33,7 @@
 		-webkit-border-radius: 4px;
 		-moz-border-radius: 4px;
 		border-radius: 4px;
-		background: #fff;
+		background: #D3D3D3;
 		border: 1px solid #e5e5e5;
 	}
 	
@@ -45,7 +45,7 @@
 		padding: 0 10px;
 		font-size: 20px;
 		border-bottom: 1px solid #e5e5e5;
-		background: #f7f7f7;
+		background: #E3E3E3;
 		border-radius: 4px 4px 0 0;
 		font-weight: bold;
 	}
