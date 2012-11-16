@@ -21,7 +21,7 @@
 		.ques_name{
 			text-align: center;
 		}
-		
+				
 		
 	</style>
 	<script type="text/javascript">
@@ -53,9 +53,10 @@
 		<div class="ct_head"><div class="left_top"></div><div class="right_top"></div><div class="none"></div></div>
 		<div class="ct_context">
 			<div class="ques_name">
-				<h2>${ques.name}</h2>
+				<h2>${ques.name}声明</h2>
 			</div>
 			<div class="agreement">
+				
 				1、 感谢您参与方远房产客户满意度调查活动；<br>
 				2、 本次满意度调查活动范围为方远房产新老业主；<br>
 				3、调查活动遵循自愿原则，采用随机码认证，匿名答题的方式，保证被调查者回答问题的客观性；<br>

@@ -27,6 +27,10 @@
 			margin-right:50px;
 			margin-bottom: 10px;
 		}
+		.spec_em{
+			font-weight:bold;
+			color: #8C6E48;
+		}
 	</style>
 	<script type="text/javascript">
 		$(function() {
@@ -55,7 +59,7 @@
 				纪念品领取码：[${prizeKey}]成功领取奖品[${prizeName}]。
 			</div>
 			<div style="text-align: right;">
-				<em >1</em>-&gt;<em >2</em>-&gt;<em style="font-weight: 600;color: red;">3</em>
+				<em >1</em>-&gt;<em >2</em>-&gt;<em class="spec_em">3</em>
 				<button class="btn_normal" type="button" id="btn_next"  >领取下一个</button> &nbsp;&nbsp;<button class="btn_normal" type="button" id="login_out"  >退出</button> &nbsp;&nbsp;
 			</div>
 		</div>

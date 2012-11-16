@@ -1,5 +1,4 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@ page session="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -33,9 +32,10 @@
 		-webkit-border-radius: 4px;
 		-moz-border-radius: 4px;
 		border-radius: 4px;
-		background: #fff;
+		background: #D3D3D3;
 		border: 1px solid #e5e5e5;
 	}
+	
 	
 	.logodiv .logo_title {
 		height: 30px;
@@ -45,7 +45,7 @@
 		padding: 0 10px;
 		font-size: 20px;
 		border-bottom: 1px solid #e5e5e5;
-		background: #f7f7f7;
+		background: #E3E3E3;
 		border-radius: 4px 4px 0 0;
 		font-weight: bold;
 	}
@@ -70,6 +70,11 @@
 	
 	.logodiv .logo_footer{
 		padding-bottom:10px;
+		background-color: #D3D3D3;
+	}
+	
+	body{
+		 background: #8C6E48;
 	}
 	
 
@@ -90,10 +95,12 @@
 <body>
 
 	<form action="${ctx}/verify" method="post">
+	<%@ include file="/common/log.jsp" %>
+	
 	<div class="container">
 		<div class="logodiv">
 			<div class="logo_title">
-				<span>方远房产满意度调查</span>
+				<span>请输入调查卡提供的认证码</span>
 			</div>
 			<div class="logo_context">
 					认证码&nbsp;&nbsp;<input type="text"  id="qtkey"  name="qtkey"  value="${qtkey}" /> 

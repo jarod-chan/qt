@@ -1,6 +1,10 @@
-package cn.fyg.qt.interfaces.shared.tool;
+package cn.fyg.qt.infrastructure.tool;
 
-public class FormatTool {
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Format {
 	
 	public static Long parseLong(String longStr,Long defaultValue){
 		Long targetValue=defaultValue;
@@ -11,4 +15,8 @@ public class FormatTool {
 		return targetValue;
 	}
 
+	public static String formatDate(Date date){
+		DateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
+		return dateFormat.format(date);
+	}
 }

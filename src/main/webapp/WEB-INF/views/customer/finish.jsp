@@ -18,7 +18,7 @@
 			line-height: 25px;
 		}
 		.spec{
-			color: red;
+			color: #314B57;
 		}
 	</style>
 	<script type="text/javascript">
@@ -40,7 +40,7 @@
 		
 			<div>
 				<div>
-					&nbsp;&nbsp;&nbsp;&nbsp;<span class="spec">${reason}</span>，你无法进行其它操作，感谢您参与方远房产客户满意度调查活动，为我们改进工作提供了有益的帮助！
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="spec">${reason}</span>，感谢您参与方远房产客户满意度调查活动，为我们改进工作提供了有益的帮助！
 				</div>
 				<div class="warn_info">
 					注意事项：<br>

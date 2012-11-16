@@ -16,6 +16,7 @@ import cn.fyg.qt.domain.model.key.KeyState;
 import cn.fyg.qt.domain.model.prizekey.PrizeKey;
 import cn.fyg.qt.domain.model.ques.Ques;
 import cn.fyg.qt.domain.model.recvlog.Recvlog;
+import cn.fyg.qt.infrastructure.tool.Format;
 import cn.fyg.qt.interfaces.admin.dao.QuesBean;
 import cn.fyg.qt.interfaces.admin.dao.TrackBean;
 
@@ -70,7 +71,7 @@ public class QuesFacade {
 		if(recvlog==null){
 			return trackBean;
 		}
-		trackBean.setRecvInfo(String.format("[%1$tY-%1$te-%1$tm %1$tH:%1$tM:%1$tS]", recvlog.getRecdate()));
+		trackBean.setRecvInfo(String.format("[%s]",Format.formatDate(recvlog.getRecdate())));
 		
 		return trackBean;
 	}

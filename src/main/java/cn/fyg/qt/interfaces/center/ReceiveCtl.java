@@ -12,13 +12,15 @@ import cn.fyg.qt.application.CenterService;
 import cn.fyg.qt.application.PrizeKeyService;
 import cn.fyg.qt.application.PrizeService;
 import cn.fyg.qt.application.QuesService;
+import cn.fyg.qt.application.RecvlogService;
 import cn.fyg.qt.domain.model.center.Center;
 import cn.fyg.qt.domain.model.prizekey.PrizeKey;
 import cn.fyg.qt.domain.model.prizekey.PrizeState;
+import cn.fyg.qt.domain.model.recvlog.Recvlog;
+import cn.fyg.qt.infrastructure.tool.Format;
 import cn.fyg.qt.interfaces.shared.Constant.Constant;
 import cn.fyg.qt.interfaces.shared.message.Message;
 import cn.fyg.qt.interfaces.shared.session.SessionUtil;
-import cn.fyg.qt.interfaces.shared.tool.FormatTool;
 
 @Controller
 @RequestMapping("/ct/receive")
@@ -37,6 +39,8 @@ public class ReceiveCtl {
 	@Autowired
 	PrizeKeyService prizeKeyService;
 	@Autowired
+	RecvlogService recvlogService;
+	@Autowired
 	SessionUtil sessionUtil;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
@@ -49,7 +53,7 @@ public class ReceiveCtl {
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String receive(String prizeKey,RedirectAttributes redirectAttributes){
-		Long longPrizeKey=FormatTool.parseLong(prizeKey, 0L);
+		Long longPrizeKey=Format.parseLong(prizeKey, 0L);
 		Long qtid = sessionUtil.getValue(Constant.QTID);
 		boolean isPass=prizeKeyService.check(longPrizeKey,qtid);
 		if(!isPass){
@@ -59,7 +63,9 @@ public class ReceiveCtl {
 		}
 		PrizeKey key = prizeKeyService.find(longPrizeKey);
 		if(PrizeState.used==key.getPrizeState()){
-			redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.error().message("领取码[%s]已经被领取，不能重复领取！",prizeKey));
+			Recvlog recvlog = recvlogService.findByPirzeKey(key.getPrizeKey());
+			Center center = centerService.find(recvlog.getCenterId());
+			redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.error().message("领取码[%s]已经于[%s]在%s被领取，不能重复领取！",prizeKey,Format.formatDate(recvlog.getRecdate()),center.getRealname()));
 			redirectAttributes.addFlashAttribute("prizeKey", prizeKey);
 			return "redirect:/ct/receive";
 		}

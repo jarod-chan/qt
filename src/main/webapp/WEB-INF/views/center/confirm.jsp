@@ -29,6 +29,10 @@
 		.prize_div{
 			margin-left: 80px;
 		}
+		.spec_em{
+			font-weight:bold;
+			color: #8C6E48;
+		}
 	</style>
 	<script type="text/javascript">
 		$(function() {
@@ -67,7 +71,7 @@
 				</select>
 			</div>
 			<div style="text-align: right;">
-				<em >1</em>-&gt;<em style="font-weight: 600;color: red;">2</em>-&gt;<em>3</em>
+				<em >1</em>-&gt;<em class="spec_em">2</em>-&gt;<em>3</em>
 				<button class="btn_normal" type="button" id="btn_comfirm"  >确认</button> &nbsp;&nbsp;<button class="btn_normal" type="button" id="login_out"  >退出</button> &nbsp;&nbsp;
 			</div>
 		</div>

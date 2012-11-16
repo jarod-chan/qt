@@ -8,7 +8,7 @@ body,input {
 }
 
 body {
-	background: white;
+	 background: #D3D3D3; 
 }
 
 ul,li {
@@ -66,11 +66,13 @@ a:hover {
 }
 
 .btn_normal:HOVER {
-	background: #4787ed;
-	background: -webkit-gradient(linear, center bottom, center top, from(#4787ed),
-		to(#4d90fe) );
-	background: -moz-linear-gradient(90deg, #4787ed, #4d90fe);
-	border-color: #3079ed;
+	background: #314B57;
+	background: -webkit-gradient(linear, center bottom, center top, from(#314B57),
+		to(#6298B0) );
+	background: -moz-linear-gradient(90deg, #314B57, #6298B0);
+	/* border-color: #3079ed; */
+	
+	border-color: #8C6E48;
 	color: #fff;
 }
 

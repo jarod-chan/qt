@@ -81,7 +81,9 @@
 	.logodiv .logo_footer{
 		padding-bottom:10px;
 	}
-	
+	body{
+		 background: #8C6E48;
+	}
 
 	</style>
 	
@@ -104,6 +106,7 @@
 <body>
 
 	<form action="${ctx}/ct" method="post">
+	<%@ include file="/common/log.jsp" %>
 	<div class="container">
 		<div class="logodiv">
 			<div class="logo_title">

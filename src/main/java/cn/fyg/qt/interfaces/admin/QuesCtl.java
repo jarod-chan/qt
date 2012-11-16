@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cn.fyg.qt.application.QuesService;
 import cn.fyg.qt.application.facade.admin.QuesFacade;
+import cn.fyg.qt.infrastructure.tool.Format;
 import cn.fyg.qt.interfaces.admin.dao.QuesBean;
 import cn.fyg.qt.interfaces.admin.dao.TrackBean;
 import cn.fyg.qt.interfaces.shared.Constant.Constant;
@@ -61,8 +62,9 @@ public class QuesCtl {
 	}
 	
 	@RequestMapping(value="/trackQtkey",method=RequestMethod.POST)
-	public String trackQtkey(@RequestParam("qtkey")Long qtkey,RedirectAttributes redirectAttributes){
-		TrackBean trackKey = quesFacade.trackKey(qtkey);
+	public String trackQtkey(@RequestParam("qtkey")String qtkey,RedirectAttributes redirectAttributes){
+		Long qtkeyLong=Format.parseLong(qtkey, 0L);
+		TrackBean trackKey = quesFacade.trackKey(qtkeyLong);
 		redirectAttributes.addFlashAttribute("trackKey",trackKey);
 		return "redirect:/am/ques";
 	}

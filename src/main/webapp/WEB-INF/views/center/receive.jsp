@@ -32,6 +32,11 @@
 			padding-right:50px;
 			color: #FF0000;
 		}
+		
+		.spec_em{
+			font-weight:bold;
+			color: #8C6E48;
+		}
 	</style>
 	<script type="text/javascript">
 		$(function() {
@@ -65,7 +70,7 @@
 				<div id="message">${message.message}</div>
 			</c:if>
 			<div style="text-align: right;">
-				<em style="font-weight: 600;color: red;">1</em>-&gt;<em>2</em>-&gt;<em>3</em>
+				<em class="spec_em">1</em>-&gt;<em>2</em>-&gt;<em>3</em>
 				<button class="btn_normal" type="button" id="check_prizekey"  >验证奖品码&nbsp;-&gt;</button> &nbsp;&nbsp;<button class="btn_normal" type="button" id="login_out"  >退出</button> &nbsp;&nbsp;
 			</div>
 		</div>

@@ -49,9 +49,11 @@
 			});
 			
 			$(".question_div").mouseover(function() {
-			     $(this).css("background-color","#99FFFF");
+				$(this).css("background-color","#8C6E48");
+				$(this).css("color","#FFFFFF");
 			}).mouseout(function(){
-				 $(this).css("background-color","#FFFFFF");
+				 $(this).css("background-color","#D3D3D3");
+				 $(this).css("color","#000000");
 			});
 			
 			$("#btn_submit").click(function(){
@@ -76,7 +78,7 @@
 			$(".text_context").attr({"maxlength":"500"}).iemaxlength();
 			
 			//选项着色
-			var optColorArr=["#FF6000","#FFCC00","#FFFFFF","#99FFFF","#0099FF"];
+			var optColorArr=["#8C6E48","#FFDC90","#D3D3D3","#6298B0","#314B57"];
 			
 			$("select").each(function(){
 				$(this).find("option").each(function(idx){

@@ -19,7 +19,7 @@
 			line-height: 20px;
 		}
 		.spec{
-			color: red;
+			color: #8C6E48;
 		}
 		.bigfont{
 			font-size: 40px;

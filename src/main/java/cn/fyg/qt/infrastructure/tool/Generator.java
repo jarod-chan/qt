@@ -2,7 +2,7 @@ package cn.fyg.qt.infrastructure.tool;
 
 import java.util.Random;
 
-public class Tool {
+public class Generator {
 	
 	private static char[] ch={'1','2','3','4','5','6','7','8','9','0'};
 		
@@ -23,5 +23,8 @@ public class Tool {
 		return Long.valueOf(key);
 	}
 	
+	
+	
+
 
 }

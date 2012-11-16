@@ -45,9 +45,9 @@ public class FinishCtl {
 	
 	private String findReason(Ques ques, Key key) {
 		if(ques.getState()!=QuesState.active){
-			return String.format("由于【%s】已%s", ques.getName(),ques.getState().getName());
+			return String.format("【%s】已%s", ques.getName(),ques.getState().getName());
 		}
-		return String.format("由于认证码【%s】%s",key.getQtkey(),key.getState().getName());
+		return String.format("认证码【%s】%s",key.getQtkey(),key.getState().getName());
 	}
 
 	@RequestMapping(value="/logout",method=RequestMethod.POST)

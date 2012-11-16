@@ -8,17 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 import cn.fyg.qt.application.KeyService;
 import cn.fyg.qt.application.QuesService;
 import cn.fyg.qt.domain.model.key.Key;
 import cn.fyg.qt.domain.model.key.KeyState;
 import cn.fyg.qt.domain.model.ques.Ques;
 import cn.fyg.qt.domain.model.ques.QuesState;
+import cn.fyg.qt.infrastructure.tool.Format;
 import cn.fyg.qt.interfaces.shared.Constant.Constant;
 import cn.fyg.qt.interfaces.shared.message.Message;
 import cn.fyg.qt.interfaces.shared.session.SessionUtil;
-import cn.fyg.qt.interfaces.shared.tool.FormatTool;
 
 @Controller
 @RequestMapping("/verify")
@@ -46,12 +45,12 @@ public class VerifyCtl {
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String verify(String qtkey,RedirectAttributes redirectAttributes){
 		logger.info(String.format("verify key:[%s]", qtkey));
-		Long longQtkey=FormatTool.parseLong(qtkey, 0L);
+		Long longQtkey=Format.parseLong(qtkey, 0L);
 		boolean isPass = keyService.check(longQtkey);
 		if(isPass){
 			return passRedirect(longQtkey);
 		}
-		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.info().message("纪念品领取码[%s]认证失败，请确认以后重新输入！",qtkey));
+		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.info().message("认证码[%s]认证失败，请确认以后重新输入！",qtkey));
 		redirectAttributes.addFlashAttribute("qtkey", qtkey);
 		return "redirect:/verify";
 	}

@@ -75,7 +75,9 @@
 		padding-bottom:10px;
 	}
 	
-
+	body{
+		 background: #8C6E48;
+	}
 	</style>
 	
 	<script type="text/javascript">
@@ -92,6 +94,8 @@
 <body>
 
 	<form action="${ctx}/am" method="post">
+	<%@ include file="/common/log.jsp" %>
+	
 	<div class="container">
 		<div class="logodiv">
 			<div class="logo_title">
