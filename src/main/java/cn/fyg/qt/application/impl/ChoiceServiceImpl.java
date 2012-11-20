@@ -17,7 +17,7 @@ public class ChoiceServiceImpl implements ChoiceService {
 	
 	@Override
 	public List<Choice> findByQtid(Long qtid) {
-		return choiceRepository.findByQtidOrderByNoAsc(qtid);
+		return choiceRepository.findByQtidOrderByIdAsc(qtid);
 	}
 
 }

@@ -26,6 +26,7 @@
 				<dbs.dialect>org.hibernate.dialect.MySQL5Dialect</dbs.dialect>
 				<dbs.username>root</dbs.username>
 				<dbs.password>0</dbs.password>
+				<dbs.showsql>true</dbs.showsql>
 			</properties>
 		</profile>
 		<profile>
@@ -35,17 +36,18 @@
 				<dbs.url>jdbc:mysql://localhost:3306/questionnaire_test</dbs.url>
 				<dbs.dialect>org.hibernate.dialect.MySQL5Dialect</dbs.dialect>
 				<dbs.username>root</dbs.username>
-				<dbs.password>0</dbs.password>
+				<dbs.showsql>true</dbs.showsql>
 			</properties>
 		</profile>
 		<profile>
 			<id>prod</id>
 			<properties>
 				<dbs.driver>com.mysql.jdbc.Driver</dbs.driver>
-				<dbs.url>jdbc:mysql://172.16.0.162:3306/questionnaire</dbs.url>
+				<dbs.url>jdbc:mysql://localhost:3306/questionnaire</dbs.url>
 				<dbs.dialect>org.hibernate.dialect.MySQL5Dialect</dbs.dialect>
 				<dbs.username>root</dbs.username>
-				<dbs.password>0</dbs.password>
+				<dbs.password>fyg9900</dbs.password>
+				<dbs.showsql>false</dbs.showsql>
 			</properties>
 		</profile>
 	</profiles>

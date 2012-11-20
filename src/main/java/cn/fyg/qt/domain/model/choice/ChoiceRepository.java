@@ -6,6 +6,6 @@ import org.springframework.data.repository.Repository;
 
 public interface ChoiceRepository extends Repository<Choice, Long> {
 	
-	List<Choice> findByQtidOrderByNoAsc(Long qtid);
+	List<Choice> findByQtidOrderByIdAsc(Long qtid);
 
 }

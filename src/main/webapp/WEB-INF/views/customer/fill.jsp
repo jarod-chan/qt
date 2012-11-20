@@ -23,13 +23,18 @@
 		  margin-bottom: 20px;
 		  padding:10px;
 		  width: 800px;
-		  border: 1px dashed #000000; 
+		  border: 1px dashed #8C6E48; 
 		}
 		.text_context{
-			border: 1px solid #000000;
+			border: 1px solid #8C6E48;
 			width: 500px;
 			height: 200px;
 			font-size: 15px;
+		}
+		.part_div{
+			font-size: 20px;
+			font-weight: bold;
+			margin-bottom: 10px;
 		}
 	</style>
 	<script type="text/javascript">
@@ -106,6 +111,13 @@
 			
 				<c:set value="0" var="index" /> 
 				<c:forEach var="question" items="${questionList}" varStatus="status">
+				
+					<c:if test="${index==0}">
+					  <div class="part_div">一、基本信息</div>
+					</c:if>
+					<c:if test="${index==4}">
+					  <div class="part_div">二、满意度调查</div>
+					</c:if>
 					
 					<div class="question_div" >
 						<!-- 根据答案组个数来确定是不是存在重要性 -->
