@@ -23,7 +23,7 @@
 		  margin-bottom: 20px;
 		  padding:10px;
 		  width: 800px;
-		  border: 1px dashed #8C6E48; 
+		  border: 1px dashed #8C6E48 ;  
 		}
 		.text_context{
 			border: 1px solid #8C6E48;
@@ -35,6 +35,11 @@
 			font-size: 20px;
 			font-weight: bold;
 			margin-bottom: 10px;
+		}
+		.answer_div{
+			margin-left: 15px; 
+			margin-top: 2px;
+		
 		}
 	</style>
 	<script type="text/javascript">
@@ -49,7 +54,8 @@
 				var checkbox=$(this);
 				checkbox.attr("checked",true);
 				checkbox.parent().find(".partItemValue").val(checkbox.val());
-				checkbox.parent().find("input[type=checkbox]").not(checkbox).removeAttr("checked");
+				checkbox.parent().find("input[type=checkbox]").not(checkbox).removeAttr("checked");   
+				checkbox.parents(".question_div").css({"padding-left":"0px","border-left":"11px solid #8C6E48"});
 				$(this).parent().find(".not_choice").hide();
 			});
 			
@@ -148,7 +154,7 @@
 							<div style="clear: both;"></div>
 						</div>
 						
-						<div style="margin-left: 15px; margin-top: 2px;">
+						<div class="answer_div" >
 							<input type="hidden" name="receiveBeans[${index}].id"    class="partItemId" value="${itemChk.id}">
 							<input type="hidden" name="receiveBeans[${index}].value" class="partItemValue" value="${itemChk.value}">
 							<c:forEach var="option" items="${itemChk.options}">
