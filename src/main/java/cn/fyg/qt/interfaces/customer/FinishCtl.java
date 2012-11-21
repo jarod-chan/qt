@@ -47,7 +47,7 @@ public class FinishCtl {
 		if(ques.getState()!=QuesState.active){
 			return String.format("【%s】已%s", ques.getName(),ques.getState().getName());
 		}
-		return String.format("认证码【%s】%s",key.getQtkey(),key.getState().getName());
+		return String.format("调查码【%s】%s",key.getQtkey(),key.getState().getName());
 	}
 
 	@RequestMapping(value="/logout",method=RequestMethod.POST)

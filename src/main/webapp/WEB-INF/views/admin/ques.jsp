@@ -98,10 +98,10 @@
 			</div>
 			<div>
 					<br>
-					认证码：<input type="text" value="" /><input id="trackQtkey" type="button" value="跟踪">
+					调查码：<input type="text" value="" /><input id="trackQtkey" type="button" value="跟踪">
 					<div>
-						认证码：${trackKey.keyInfo}<br>
-						奖品码：${trackKey.prizeInfo}<br>
+						调查码：${trackKey.keyInfo}<br>
+						领取码：${trackKey.prizeInfo}<br>
 						领奖时间：${trackKey.recvInfo}<br>	
 					</div>
 			</div>

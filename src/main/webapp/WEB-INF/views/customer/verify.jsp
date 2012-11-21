@@ -100,10 +100,10 @@
 	<div class="container">
 		<div class="logodiv">
 			<div class="logo_title">
-				<span>请输入调查卡提供的认证码</span>
+				<span>请输入调查卡提供的调查码</span>
 			</div>
 			<div class="logo_context">
-					认证码&nbsp;&nbsp;<input type="text"  id="qtkey"  name="qtkey"  value="${qtkey}" /> 
+					调查码&nbsp;&nbsp;<input type="text"  id="qtkey"  name="qtkey"  value="${qtkey}" /> 
 			</div>
 			<c:if test="${not empty message}" >
 				<div id="message">${message.message}</div>

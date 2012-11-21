@@ -50,7 +50,7 @@ public class VerifyCtl {
 		if(isPass){
 			return passRedirect(longQtkey);
 		}
-		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.info().message("认证码[%s]认证失败，请确认以后重新输入！",qtkey));
+		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.info().message("调查码[%s]认证失败，请确认以后重新输入！",qtkey));
 		redirectAttributes.addFlashAttribute("qtkey", qtkey);
 		return "redirect:/verify";
 	}

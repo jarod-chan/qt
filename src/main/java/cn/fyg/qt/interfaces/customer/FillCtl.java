@@ -61,7 +61,7 @@ public class FillCtl {
 		Key key = keyService.find(qtkey);
 		//过滤重复提交等问题
 		if(key.getState()!=KeyState.used){
-			redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.info().message("你的操作被系统拒绝，请重新输入【认证码】，确认你已完成调查！",qtkey));
+			redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.info().message("你的操作被系统拒绝，请重新输入【调查码】，确认你已完成调查！",qtkey));
 			return "redirect:/verify";
 		}
 		Long prizeKey=fillFacade.fill(receivePage, qtid, qtkey);
