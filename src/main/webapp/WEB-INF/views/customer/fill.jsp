@@ -39,8 +39,38 @@
 		.answer_div{
 			margin-left: 15px; 
 			margin-top: 2px;
-		
+			padding:0;
+			height: 20px;
 		}
+		
+		.answer_ul {
+			list-style-type:none;
+			padding:0;
+			margin:0;
+			width:100%;
+		}
+		.answer_ul .option_li{ 
+			float:left;
+			padding:0;
+			margin:0;
+			display: inline;
+			cursor: pointer;
+			_cursor: hand;
+			margin-right: 30px;
+			height: 20px;
+		}
+		
+		.span_cont{
+			width:5px;
+			display:-moz-inline-box;
+			display:inline-block;
+		}
+		
+		.span_radic{
+			color: red;
+			
+		}
+		
 	</style>
 	<script type="text/javascript">
 		$(function() {
@@ -50,21 +80,21 @@
 				return false;
 			});
 			
-			$("input[type=checkbox]").click(function(){
-				var checkbox=$(this);
-				checkbox.attr("checked",true);
-				checkbox.parent().find(".partItemValue").val(checkbox.val());
-				checkbox.parent().find("input[type=checkbox]").not(checkbox).removeAttr("checked");   
-				checkbox.parents(".question_div").css({"padding-left":"0px","border-left":"11px solid #8C6E48"});
-				$(this).parent().find(".not_choice").hide();
+			$(".answer_ul .option_li").click(function(){
+				var option_li=$(this);
+				var answer_ul=option_li.parent();
+				var quesdiv=option_li.parents(".question_div");
+				answer_ul.find(".span_radic").hide();
+				answer_ul.find(".not_choice").hide();
+				option_li.find(".span_radic").show();
+				quesdiv.find(".partItemValue").val(option_li.find(".option_id").val());
+				quesdiv.css({"padding-left":"0px","border-left":"11px solid #8C6E48"});
 			});
 			
 			$(".question_div").mouseover(function() {
-				$(this).css("background-color","#8C6E48");
-				$(this).css("color","#FFFFFF");
+				$(this).css({"background-color":"#8C6E48","color":"#FFFFFF"});
 			}).mouseout(function(){
-				 $(this).css("background-color","#D3D3D3");
-				 $(this).css("color","#000000");
+				$(this).css({"background-color":"#D3D3D3","color":"#000000"});
 			});
 			
 			$("#btn_submit").click(function(){
@@ -139,7 +169,7 @@
 						</c:choose>
 				
 						<div >
-							<div style="float: left; width: 620px;">${question.choice.no}.${question.choice.subject}</div>				
+							<div style="float: left; width: 600px;">${question.choice.no}.${question.choice.subject}</div>				
 							<div style="float: left; ">
 								<c:if test="${not empty itemSel}">
 										<input type="hidden" name="receiveBeans[${index}].id"   value="${itemSel.id}">
@@ -151,16 +181,22 @@
 									<c:set value="${index+1}" var="index" />
 								</c:if>
 							</div>
-							<div style="clear: both;"></div>
+							<div style="clear: both;width: 0;height: 0;"></div>
 						</div>
 						
 						<div class="answer_div" >
 							<input type="hidden" name="receiveBeans[${index}].id"    class="partItemId" value="${itemChk.id}">
 							<input type="hidden" name="receiveBeans[${index}].value" class="partItemValue" value="${itemChk.value}">
-							<c:forEach var="option" items="${itemChk.options}">
-								<input type="checkbox" name="chk_${status.count}_${itemChk.type}" value="${option.id}" <c:if test="${option.id==itemChk.value}">checked="true"</c:if> />(${option.no})&nbsp;${option.name}&nbsp;&nbsp;
-							</c:forEach>
-							<span class="not_choice" style="color: red;display: none;">【X】</span>
+							<ul class="answer_ul">
+								<c:forEach var="option" items="${itemChk.options}">
+								<li class="option_li">
+									(${option.no})${option.name}<span class="span_cont"><span class="span_radic"  <c:if test="${option.id!=itemChk.value}">style="display:none;"</c:if> >&radic;</span></span>
+									<input type="hidden" class="option_id" value="${option.id}" />
+								</li>
+								</c:forEach>
+								<li><span class="not_choice" style="color: red;display: none;">【X】</span></li>
+							</ul>
+							
 						</div>
 						<c:set value="${index+1}" var="index" />
 
