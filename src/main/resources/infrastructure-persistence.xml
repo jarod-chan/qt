@@ -34,7 +34,7 @@
 		p:password="${db.password}" />
 
 	<!-- Spring Data Jpa配置 -->
-	<jpa:repositories base-package="cn.fyg.bp.domain.model" transaction-manager-ref="transactionManager" 
+	<jpa:repositories base-package="cn.fyg.qt.domain.model" transaction-manager-ref="transactionManager" 
 	entity-manager-factory-ref="entityManagerFactory" />
 
 	

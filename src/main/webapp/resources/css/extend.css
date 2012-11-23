@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+/*
+子页面共用样式
+*/
+.ctdiv {
+	margin: 120px auto 0;
+	width: 800px;
+	color: #000000;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	font-size: 15px;
+	border: 1px solid #E5E5E5;
+}
+
+.ct_context{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.left_bottom,.left_top,.right_bottom,.right_top {
+	width: 10px;
+	height: 10px;
+}
+
+.left_bottom,.left_top {
+	border-left: 3px solid #8C6E48;
+	float: left;
+}
+
+.right_bottom,.right_top {
+	border-right: 3px solid #8C6E48;
+	float: right;
+}
+
+.left_top,.right_top {
+	border-top: 3px solid #8C6E48;
+}
+
+.left_bottom,.right_bottom {
+	border-bottom: 3px solid #8C6E48;
+}
+
+.none {
+	clear: both;
+}

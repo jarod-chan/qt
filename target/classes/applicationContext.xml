@@ -15,5 +15,6 @@
 	<context:component-scan base-package="cn.fyg.qt.infrastructure" />
 	<context:component-scan base-package="cn.fyg.qt.domain" />
 	<context:component-scan base-package="cn.fyg.qt.application" />
+	
 
 </beans>
