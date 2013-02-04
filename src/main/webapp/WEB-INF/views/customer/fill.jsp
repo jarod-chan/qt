@@ -9,6 +9,8 @@
 	<%@ include file="/common/setting.jsp" %>
 	<%@ include file="/common/meta.jsp" %>
 	<%@ include file="/common/base.jsp" %>
+	
+	<%@ include file="button_custom.jsp" %>
 	<style type="text/css">
 		.ctdiv{
 			width: 830px;
@@ -39,67 +41,148 @@
 		.answer_div{
 			margin-left: 15px; 
 			margin-top: 2px;
-		
+			padding:0;
+			height: 20px;
 		}
+		
+		.answer_ul {
+			list-style-type:none;
+			padding:0;
+			margin:0;
+			width:100%;
+		}
+		.answer_ul .option_li{ 
+			float:left;
+			padding:0;
+			margin:0;
+			display: inline;
+			cursor: pointer;
+			_cursor: hand;
+			margin-right: 30px;
+			height: 20px;
+		}
+		
+		.span_cont{
+			margin-top:3px;
+			margin-left:3px;
+			float:left;
+			width:12px;
+			height:12px;
+			border: 1px solid black;
+			cursor：pointer;
+			_cursor:hand;
+			background-color: #D3D3D3;
+		}
+		
+		
+		.option_sel{
+			background-color: #8C6E48;
+			color: #FFFFFF;
+		}
+		
+		.question_noml{
+			background-color :#D3D3D3;
+			color: #000000;
+		}
+		
+		.question_curr{
+			background-color : #8C6E48;
+			color : #FFFFFF;
+		}
+		
+		.question_curr .option_sel{
+			background-color: #D3D3D3;
+			color: #000000;
+		}
+		
+		.option_sel .span_cont{
+			border: 1px solid white;
+			background-color: #8C6E48;
+		}
+		
+		.question_curr .option_sel .span_cont{
+			border: 1px solid black;
+			background-color: #D3D3D3;
+ 		}
+		
+		.question_curr .span_cont{
+			border: 1px solid white;
+		}
+		
+
 	</style>
 	<script type="text/javascript">
+
+
 		$(function() {
-			$('#login_out').click(function(){
-				var actionFrom=$("form");
+			$('#login_out').click(function() {
+				var actionFrom = $("form");
 				actionFrom.submit();
 				return false;
 			});
-			
-			$("input[type=checkbox]").click(function(){
-				var checkbox=$(this);
-				checkbox.attr("checked",true);
-				checkbox.parent().find(".partItemValue").val(checkbox.val());
-				checkbox.parent().find("input[type=checkbox]").not(checkbox).removeAttr("checked");   
-				checkbox.parents(".question_div").css({"padding-left":"0px","border-left":"11px solid #8C6E48"});
-				$(this).parent().find(".not_choice").hide();
+
+			$(".answer_ul .option_li").click(
+				function() {
+					var option_li = $(this);
+					var answer_ul = option_li.parent();
+					var quesdiv = option_li.parents(".question_div");
+					answer_ul.find(".not_choice").hide();
+					quesdiv.find(".partItemValue").val(option_li.find(".option_id").val());
+					quesdiv.css({
+						"padding-left" : "0px",
+						"border-left" : "11px solid #8C6E48"
+					});
+
+					answer_ul.find(".option_sel").removeClass("option_sel");
+					option_li.addClass("option_sel");
 			});
-			
+
 			$(".question_div").mouseover(function() {
-				$(this).css("background-color","#8C6E48");
-				$(this).css("color","#FFFFFF");
-			}).mouseout(function(){
-				 $(this).css("background-color","#D3D3D3");
-				 $(this).css("color","#000000");
+				$(this).addClass("question_curr").removeClass("question_noml");
+			}).mouseout(function() {
+				$(this).addClass("question_noml").removeClass("question_curr");
 			});
-			
-			$("#btn_submit").click(function(){
-				var partItems=$(".partItemValue");
-				var flag=false;
-				partItems.each(function(){
-					if($(this).val()==""){
-					   $(this).parent().find(".not_choice").show();
-					   flag=true;
+
+			$("#btn_submit").click(function() {
+				var partItems = $(".partItemValue");
+				var flag = false;
+				partItems.each(function() {
+					if ($(this).val() == "") {
+						$(this).parent().find(".not_choice").show();
+						flag = true;
 					}
 				});
-				if(flag){
-					alert("红色标注行没被选择，无法【提交问卷】！");
+				if (flag) {
+					alert("红色标注【X】行没被选择，无法【提交问卷】！");
 					return;
 				}
-				
-				var actionFrom=$("form");
-				var oldAction=actionFrom.attr("action");
+
+				var actionFrom = $("form");
+				var oldAction = actionFrom.attr("action");
 				actionFrom.submit();
 			});
-			
-			$(".text_context").attr({"maxlength":"500"}).iemaxlength();
-			
+
+			$(".text_context").attr({
+				"maxlength" : "500"
+			}).iemaxlength();
+
 			//选项着色
-			var optColorArr=["#8C6E48","#FFDC90","#D3D3D3","#6298B0","#314B57"];
-			
-			$("select").each(function(){
-				$(this).find("option").each(function(idx){
-					$(this).css("background-color",optColorArr[idx]);
-				});
-				$(this).bind("change",function(){
-					$(this).css("background-color",optColorArr[this.selectedIndex])
-				}).triggerHandler("change");
-			});
-			
+			var optColorArr = [ "#8C6E48", "#FFDC90", "#D3D3D3", "#6298B0",
+					"#314B57" ];
+
+			$("select").each(
+					function() {
+						$(this).find("option").each(function(idx) {
+							$(this).css("background-color", optColorArr[idx]);
+						});
+						$(this).bind(
+								"change",
+								function() {
+									$(this).css("background-color",
+											optColorArr[this.selectedIndex])
+								}).triggerHandler("change");
+					});
+
 		});
 	</script>
 </head>
@@ -139,7 +222,7 @@
 						</c:choose>
 				
 						<div >
-							<div style="float: left; width: 620px;">${question.choice.no}.${question.choice.subject}</div>				
+							<div style="float: left; width: 600px;">${question.choice.no}.${question.choice.subject}</div>				
 							<div style="float: left; ">
 								<c:if test="${not empty itemSel}">
 										<input type="hidden" name="receiveBeans[${index}].id"   value="${itemSel.id}">
@@ -151,23 +234,26 @@
 									<c:set value="${index+1}" var="index" />
 								</c:if>
 							</div>
-							<div style="clear: both;"></div>
+							<div style="clear: both;width: 0;height: 0;"></div>
 						</div>
 						
 						<div class="answer_div" >
 							<input type="hidden" name="receiveBeans[${index}].id"    class="partItemId" value="${itemChk.id}">
 							<input type="hidden" name="receiveBeans[${index}].value" class="partItemValue" value="${itemChk.value}">
-							<c:forEach var="option" items="${itemChk.options}">
-								<input type="checkbox" name="chk_${status.count}_${itemChk.type}" value="${option.id}" <c:if test="${option.id==itemChk.value}">checked="true"</c:if> />(${option.no})&nbsp;${option.name}&nbsp;&nbsp;
-							</c:forEach>
-							<span class="not_choice" style="color: red;display: none;">【X】</span>
+							<ul class="answer_ul">
+								<c:forEach var="option" items="${itemChk.options}">
+								<li class="option_li <c:if test="${option.id==itemChk.value}">option_sel</c:if>">
+									<span class="span_cont"></span>&nbsp;${option.name}
+									<input type="hidden" class="option_id" value="${option.id}" />
+								</li>
+								</c:forEach>
+								<li><span class="not_choice" style="color: red;display: none;">【X】</span></li>
+							</ul>
+							
 						</div>
 						<c:set value="${index+1}" var="index" />
 
-						
-						
-						
-						
+							
 					</div>
 					
 					
@@ -188,7 +274,7 @@
 				</c:forEach>
 						
 			</div>
-			<div class="ques_btn">
+			<div class="ques_btn" style="text-align: center;">
 				<button class="btn_normal" type="button" id="btn_submit"  >提交问卷</button> &nbsp;&nbsp;
 			</div>
 		</div>

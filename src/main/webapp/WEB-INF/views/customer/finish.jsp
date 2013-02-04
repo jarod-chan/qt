@@ -8,6 +8,8 @@
 	<%@ include file="/common/setting.jsp" %>
 	<%@ include file="/common/meta.jsp" %>
 	<%@ include file="/common/base.jsp" %>
+	
+	<%@ include file="button_custom.jsp" %>
 	<style type="text/css">
 		.ctdiv{
 			width: 500px;

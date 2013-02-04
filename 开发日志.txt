@@ -1,10 +1,39 @@
 
-facade 层控制事务 是否有问题？
+1 facade 层控制事务 是否有问题？
 
-方远UI 配色
+2方远UI 配色
 	#8C6E48  金色
 	#D3D3D3  棕色
 	#314B57  蓝色
 
+3 控制页面的重复提交，会造成数据重复。
 
+linux 总结
+1.软件一般安装在/usr/local 目录下面
+2.重命名文件 mv，新文件已经存在，会被覆盖
 
+jetty 7.4  问题总结
+1.启动jetty：进入jetty目录，输入./bin/jetty.sh start
+2.停止jetty：进入jetty目录，输入./bin/jetty.sh stop
+3.检查参数： 							  同上         check
+
+start    
+    启动jetty服务
+stop    
+    停止jetty服务
+restart 
+    重启jetty服务
+supervise    
+    挂起服务
+check   
+     显示当前jetty实例运行时所使用的变量参数，可以用来查看变量是否设置正确。
+     
+ 部署根应用
+在webapp/root 下放置应用
+把一个项目打包成root.jar也可以
+
+默认临时目录指向linux系统临时目录，会被定时请空的解决办法。
+修改临时文件存放目录
+修改根目录下 start.jar 中， org/eclipse/jetty/start 中的 start.config 
+在 OPTIONS~=default,* 下一行添加 java.io.tmpdir=C:/temp 。
+此步骤也可以放在启动时属性中，启动命令 java - Djava . io . tmpdir = C :/ temp - jar start . jar
