@@ -8,6 +8,8 @@
 	<%@ include file="/common/setting.jsp" %>
 	<%@ include file="/common/meta.jsp" %>
 	<%@ include file="/common/base.jsp" %>
+	
+	<%@ include file="button_custom.jsp" %>
 	<style type="text/css">
 		.ctdiv{
 			width: 600px;
@@ -21,9 +23,14 @@
 		.ques_name{
 			text-align: center;
 		}
-				
 		
+		#check{
+			height:40px;
+			width: 40px;
+		}
 	</style>
+	
+	
 	<script type="text/javascript">
 		$(function() {
 			$("#check").bind("click",function(){
@@ -65,8 +72,11 @@
 				6、调查结果不对外公开，作为方远房产公司内部改进产品质量和服务的依据；<br>
 				7、调查问卷由方远房产营销中心负责解释。<br><br>
 			</div>
-			<div style="text-align: right;">
-				<input id="check" type="checkbox"> 我已认真阅读相关条款，同意参与本次调查。<button class="btn_disable" type="button" id="btn_start"  >开始调查</button> &nbsp;&nbsp;
+			<div style="text-align: center;font-size: 40px;line-height: 50px;">
+				<input id="check" type="checkbox">&nbsp;我同意参与本次调查
+			</div>
+			<div style="text-align: center;margin-top: 10px;">
+				<button class="btn_disable" type="button" id="btn_start"  >开始调查</button> &nbsp;&nbsp;
 			</div>
 		</div>
 		<div class="ct_foot"><div class="left_bottom"></div><div class="right_bottom"></div><div class="none"></div></div>
