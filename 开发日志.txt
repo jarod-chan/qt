@@ -37,3 +37,10 @@ check
 修改根目录下 start.jar 中， org/eclipse/jetty/start 中的 start.config 
 在 OPTIONS~=default,* 下一行添加 java.io.tmpdir=C:/temp 。
 此步骤也可以放在启动时属性中，启动命令 java - Djava . io . tmpdir = C :/ temp - jar start . jar
+
+
+
+
+mysql 导出导入
+备份数据库：mysqldump -h(ip) -uroot -p(password) databasename > database.sql 
+恢复数据库：mysql -h(ip) -uroot -p(password) databasename < database.sql 
