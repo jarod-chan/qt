@@ -44,3 +44,11 @@ check
 mysql 导出导入
 备份数据库：mysqldump -h(ip) -uroot -p(password) databasename > database.sql 
 恢复数据库：mysql -h(ip) -uroot -p(password) databasename < database.sql 
+
+
+mysql 
+在windows下默认表不区分大小写，在linux下默认区分大小写
+解决办法：
+	在my.conf加入：
+	lower_case_table_names = 0
+	其中 0：区分大小写，1：不区分大小写
